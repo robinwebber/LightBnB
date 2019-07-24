@@ -28,7 +28,7 @@ CREATE TABLE properties (
   city TEXT,
   province TEXT,
   post_code TEXT,
-  active BOOLEAN
+  active BOOLEAN DEFAULT TRUE
 );
 
 CREATE TABLE reservations (
