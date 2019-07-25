@@ -7,7 +7,7 @@ const pool = new Pool({
   user: 'robin',
   password: 'robin',
   host: 'localhost',
-  database: 'bootcampx'
+  database: 'lightbnb'
 });
 
 /// Users
@@ -76,15 +76,17 @@ exports.getAllReservations = getAllReservations;
  * @return {Promise<[{}]>}  A promise to the properties.
  */
 const getAllProperties = function(options, limit = 10) {
-  pool.query(`
+  return pool.query(`
   SELECT * FROM properties
   LIMIT $1
   `, [limit])
-  .then(res => {
-    console.log(res.rows)
+  .then(res => res.rows)
+  .catch(err => {
+    console.log(err.message, null)
   })
-  .catch(err);
-}
+
+};
+
 exports.getAllProperties = getAllProperties;
 
 
